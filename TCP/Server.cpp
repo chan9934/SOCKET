@@ -54,7 +54,17 @@ int main(int argc, char* argv[])
 		ErrorHandling("accept() error");
 	}
 
-	send(hClntSock, message, sizeof(message), 0);
+	while (sizeof(message)-1 == send(hClntSock, message, 1, 0))
+	{
+		
+		
+	}
+	int a = sizeof(message);
+	for (int i = 1; i < a; ++i)
+	{
+		send(hClntSock, message+i, 1, 0);
+		
+	}
 
 	closesocket(hClntSock);
 	closesocket(hServSock);

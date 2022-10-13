@@ -48,19 +48,19 @@ int main(int argc, char* argv[])
 		ErrorHandling("connect() error!");
 	}
 
-	while (readLen = recv(hSocket, &message[++Idx], 1, 0))
+	for (int i = 0; i < 3000; ++i)
 	{
-		if (readLen == -1)
+		printf("wait time %d \n", i);
+	}
+	strLen = recv(hSocket, message, sizeof(message)-1, 0);
+	
+		if (strLen == -1)
 		{
 			ErrorHandling("read() error!");
 		}
 		
-			strLen += readLen;
-
-	}
 
 	printf("Message from server: %s \n", message);
-	printf("FUNCTION read call count : %d \n", strLen);
 	
 }
 
