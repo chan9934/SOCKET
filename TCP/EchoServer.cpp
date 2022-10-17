@@ -62,7 +62,6 @@ int main(int argc, char* argv[])
 
 		while ((strLen = recv(hClntSock, message, BUF_SIZE, 0)) != 0)
 		{
-			printf("strLen : %d", strLen);
 			send(hClntSock, message, strLen, 0);
 
 		}

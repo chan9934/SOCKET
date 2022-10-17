@@ -53,10 +53,19 @@ int main(int argc, char* argv[])
 		{
 			break;
 		}
-		int a = strlen(message);
-		printf("strlen(message) : %d", a);
-		send(hSocket, message, strlen(message), 0); //strlen 문자열 길이
-		strLen = recv(hSocket, message, BUF_SIZE - 1, 0);
+		int recv_Len = 0;
+		strLen = send(hSocket, message, strlen(message), 0); //strlen 문자열 길이
+		while (strLen > recv_Len)
+		{
+			int recv_Cnt = recv(hSocket, message, BUF_SIZE - 1, 0);
+			if (recv_Cnt == SOCKET_ERROR)
+			{
+				ErrorHandling("read() error");
+			}
+			recv_Len += recv_Cnt;
+
+
+		}
 
 		message[strLen] = 0;
 		printf("Message from server: %s", message);
