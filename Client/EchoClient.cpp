@@ -44,20 +44,47 @@ int main(int argc, char* argv[])
 	else
 		puts("connected ...........");
 
-	while (1)
-	{
-		fputs("Input message(Q to quit) : ", stdout);// stdout 표준 출력
-		fgets(message, BUF_SIZE, stdin);//stdin 표준 입력
+	int a = 0;
 
-		if (!strcmp(message, "q\n") || !strcmp(message, "Q\n")) // 두 스트링 비교
+		fputs("Operand Count : ", stdout);
+
+		cin >> a;
+		string s = " ";
+		char b = ' ';
+		for (int i = 0; i < a; ++i)
 		{
-			break;
+			
+			
+			printf("Operand %d: ", i + 1);
+			cin >> b;
+			s += b + ' ';
+			cout << "\n";
+			
 		}
-		int recv_Len = 0;
-		strLen = send(hSocket, message, strlen(message), 0); //strlen 문자열 길이
-		while (strLen > recv_Len)
+		cout << "Operator: ";
+		cin >> b;
+		s += b;
+
+
+		
+		send(hSocket, const_cast<char*>(s.c_str()), s.length(), 0);
+
+		recv(hSocket, message, 4, 0);
+		cout << message;
+		//fgets(message, BUF_SIZE, stdin);//stdin 표준 입력
+
+		//if (!strcmp(message, "q\n") || !strcmp(message, "Q\n")) // 두 스트링 비교
+		//{
+		//	break;
+		//}
+	//int recv_Len = 0;
+		//strLen = send(hSocket, message, strlen(message), 0); //strlen 문자열 길이
+
+		//int Count = 3;
+
+	/*	while (strLen > recv_Len)
 		{
-			int recv_Cnt = recv(hSocket, message, BUF_SIZE - 1, 0);
+			int recv_Cnt = ;
 			if (recv_Cnt == SOCKET_ERROR)
 			{
 				ErrorHandling("read() error");
@@ -65,11 +92,11 @@ int main(int argc, char* argv[])
 			recv_Len += recv_Cnt;
 
 
-		}
+		}*/
 
-		message[strLen] = 0;
-		printf("Message from server: %s", message);
-	}
+		//message[strLen] = 0;
+		//printf("Message from server: %s", message);
+	
 	closesocket(hSocket);
 	WSACleanup();
 	return 0;

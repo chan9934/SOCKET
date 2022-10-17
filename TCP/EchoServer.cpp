@@ -4,6 +4,8 @@
 
 #define BUF_SIZE 1024
 
+using namespace std;
+
 void ErrorHandling(const char* message);
 
 int main(int argc, char* argv[])
@@ -60,10 +62,25 @@ int main(int argc, char* argv[])
 		else
 			printf("Connected client %d \n", i + 1);
 
-		while ((strLen = recv(hClntSock, message, BUF_SIZE, 0)) != 0)
-		{
-			send(hClntSock, message, strLen, 0);
+		//while ((strLen = recv(hClntSock, message, BUF_SIZE, 0)) != 0)
+		//{
+		//	send(hClntSock, message, strLen, 0);
 
+		//}
+		recv(hClntSock, message, BUF_SIZE, 0);
+		string a = message;
+
+		string b;
+		string c = a.substr(a.rfind(' ')+1);
+		int g;
+		if (c == "+")
+		{
+			while (1)
+			{
+				b = a.substr(0, a.find(' '));
+				int f = stoi(b);
+				g += f;
+			}
 		}
 
 
