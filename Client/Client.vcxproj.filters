@@ -21,7 +21,13 @@
     <ClCompile Include="EchoClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CalculationClient.cpp">
+    <ClCompile Include="OperationClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectUDPClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="File_Client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

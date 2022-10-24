@@ -1,55 +1,59 @@
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <iostream>
-#include <winsock2.h>
+#include<WinSock2.h>
 
-#define BUF_SIZE 1024
+#define BUF_SIZE 30
+
+using namespace std;
+
 void ErrorHandling(const char* message);
 
 int main(int argc, char* argv[])
 {
 	WSADATA wsaData;
-	SOCKET hSocket;
+	SOCKET sock;
 	char message[BUF_SIZE];
 	int strLen;
-	SOCKADDR_IN servAdr;
 
-	if (argc != 3) {
-		printf("Usage : %s <IP> <port>\n", argv[0]);
+	SOCKADDR_IN servAdr;
+	if (argc != 3)
+	{
+		printf("Usage : %s <IP> <port> \n", argv[0]);
 		exit(1);
 	}
 
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
+	{
 		ErrorHandling("WSAStartup() error!");
+	}
 
-	hSocket = socket(PF_INET, SOCK_STREAM, 0);
-	if (hSocket == INVALID_SOCKET)
+	sock = socket(PF_INET, SOCK_DGRAM, 0);
+	if (sock == INVALID_SOCKET)
+	{
 		ErrorHandling("socket() error");
+	}
 
 	memset(&servAdr, 0, sizeof(servAdr));
 	servAdr.sin_family = AF_INET;
 	servAdr.sin_addr.s_addr = inet_addr(argv[1]);
 	servAdr.sin_port = htons(atoi(argv[2]));
-
-	if (connect(hSocket, (SOCKADDR*)&servAdr, sizeof(servAdr)) == SOCKET_ERROR)
-		ErrorHandling("connect() error!");
-	else
-		puts("Connected...........");
+	connect(sock, (SOCKADDR*) & servAdr, sizeof(servAdr));
 
 	while (1)
 	{
-		fputs("Input message(Q to quit): ", stdout);
-		fgets(message, BUF_SIZE, stdin);
+		fputs("Insert message(q to quit): ", stdout);
+		fgets(message, sizeof(message), stdin);
 
 		if (!strcmp(message, "q\n") || !strcmp(message, "Q\n"))
+		{
 			break;
-
-		send(hSocket, message, strlen(message), 0);
-		strLen = recv(hSocket, message, BUF_SIZE - 1, 0);
+		}
+		send(sock, message, strlen(message), 0);
+		strLen = recv(sock, message, sizeof(message) - 1, 0);
 		message[strLen] = 0;
 		printf("Message from server: %s", message);
 	}
-
-	closesocket(hSocket);
+	closesocket(sock);
 	WSACleanup();
 	return 0;
 }

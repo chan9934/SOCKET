@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <iostream>
 #include <winsock2.h>
 
 #define BUF_SIZE 1024
@@ -42,10 +40,11 @@ int main(int argc, char* argv[])
 	
 	for (i = 0; i < 5; ++i)
 	{
+		
 		opndCnt = 0;
 		hClntSock = accept(hServSock, (SOCKADDR*)&clntAdr, &clntAdrSize);
+		printf("Connected client %d \n", i + 1);
 		recv(hClntSock, (char*)&opndCnt, 1, 0); // opndCnt 지정크기 ex)3 즉 범위 지정
-
 		recvLen = 0;
 		while ((opndCnt * OPSZ + 1) > recvLen)
 		{
@@ -54,8 +53,13 @@ int main(int argc, char* argv[])
 		}
 
 		result = calculate(opndCnt, (int*)opinfo, opinfo[recvLen - 1]);
+		send(hClntSock, (char*)&result, sizeof(result), 0);
+		closesocket(hClntSock);
 
 	}
+	closesocket(hServSock);
+	WSACleanup();
+	return 0;
 }
 
 int calculate(int opnum, int opnds[], char op)
