@@ -1,5 +1,7 @@
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <winsock2.h>
 
 #define BUF_SIZE 1024
@@ -53,7 +55,7 @@ int main(int argc, char* argv[])
 	WSACleanup();
 	return 0;
 }
-
+y
 void ErrorHandling(const char* message)
 {
 	fputs(message, stderr);

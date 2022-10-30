@@ -42,5 +42,17 @@
     <ClCompile Include="Get_Set_BUF.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Echo_MultiplexingServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OOBRecv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MulticastSender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadcastSender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
