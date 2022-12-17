@@ -81,5 +81,8 @@
     <ClCompile Include="OverlappedSend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IOCPMINE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
