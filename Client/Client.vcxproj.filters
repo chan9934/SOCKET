@@ -51,5 +51,8 @@
     <ClCompile Include="IOCP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IOCPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
