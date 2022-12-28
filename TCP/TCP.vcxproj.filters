@@ -108,5 +108,8 @@
     <ClCompile Include="OOB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="chat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
