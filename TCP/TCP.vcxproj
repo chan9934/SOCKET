@@ -159,6 +159,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Chat_Server.cpp" />
+    <ClCompile Include="Connect.cpp" />
     <ClCompile Include="Echo.cpp" />
     <ClCompile Include="EchoServerServer.cpp" />
     <ClCompile Include="Echo_MultiplexingServer.cpp">
