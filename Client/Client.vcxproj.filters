@@ -57,5 +57,8 @@
     <ClCompile Include="OOBSendd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ClClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
